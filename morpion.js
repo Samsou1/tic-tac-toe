@@ -141,21 +141,41 @@ class Morpion {
 		// 	});
 		// });
 		// End of first found
-		console.log(this.gridMap)
+
 		let tree = new Tree(this.gridMap);
-		console.log(tree)
-		console.log(tree.root)
-		console.log(tree.root.children)
-		// Random
-		while(!hasPlayed){
-			let x = Math.floor(Math.random() * 3);
-			let y = Math.floor(Math.random() * 3);
-			if(this.gridMap[x][y] === null && !hasPlayed){
-				hasPlayed = this.drawHit(x, y, this.iaPlayer);
+		let bestChoice = tree.root.children.reduce(function(acc, current){
+			if(current.value >= acc.value){
+				return current;
+			}else{
+				return acc;
 			}
-		}
+		});
+		var [x,y] = this.checkMovementFromBestChoice(bestChoice);
+		this.drawHit(x, y, this.iaPlayer);
+		
+
+		// Random
+		// while(!hasPlayed){
+		// 	let x = Math.floor(Math.random() * 3);
+		// 	let y = Math.floor(Math.random() * 3);
+		// 	if(this.gridMap[x][y] === null && !hasPlayed){
+		// 		hasPlayed = this.drawHit(x, y, this.iaPlayer);
+		// 	}
+		// }
 		// End of Random
 	}
+
+	checkMovementFromBestChoice(node){
+		let gridMap = [...this.gridMap];
+		for(let i = 0; i < 3; i++){
+			for(let j = 0 ; j < 3; j++){
+				if(gridMap[i][j] != node.data[i][j]){
+					return [j,i]
+				}
+			}
+		}
+	}
+
 }
 
 Morpion = new Morpion();
