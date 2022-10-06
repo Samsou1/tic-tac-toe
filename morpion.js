@@ -1,3 +1,5 @@
+import Tree from "../node.js";
+
 class Morpion {
 	humanPlayer = 'J1';
 	iaPlayer = 'J2';
@@ -126,12 +128,32 @@ class Morpion {
 		}
 
 		let hasPlayed = false;
-		this.gridMap.forEach((line, y) => {
-			line.forEach((cell, x) => {
-				if (!cell && !hasPlayed) {
-					hasPlayed = this.drawHit(x, y, this.iaPlayer);
-				}
-			});
-		});
+
+		// First found
+		// this.gridMap.forEach((line, y) => {
+		// 	line.forEach((cell, x) => {
+		// 		console.log(y, x)
+		// 		console.log(cell)
+		// 		console.log(!cell)
+		// 		if (!cell && !hasPlayed) {
+		// 			hasPlayed = this.drawHit(x, y, this.iaPlayer);
+		// 		}
+		// 	});
+		// });
+		// End of first found
+		let firstNode = 4;
+		let ary = [2,3,5,1,8,9]
+		let tree = new Tree(firstNode, ary);
+		console.log(tree)
+		// Random
+		while(!hasPlayed){
+			let x = Math.floor(Math.random() * 3);
+			let y = Math.floor(Math.random() * 3);
+			if(this.gridMap[x][y] === null && !hasPlayed){
+				console.log("rentre dans la boucle")
+				hasPlayed = this.drawHit(x, y, this.iaPlayer);
+			}
+		}
+		// End of Random
 	}
 }
