@@ -40,7 +40,7 @@ class Tree{
 
   setValues(node = this.root){
     if(node.value == null){
-      node.children.reduce((acc, child) => this.setValues(child));
+      node.children.map(child => this.setValues(child));
       node.value = node.children.reduce(function(acc, current){
         return acc + current.value/node.children.length;
       }, 0)
