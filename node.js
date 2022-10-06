@@ -68,14 +68,8 @@ class Node{
     }
 
     const isFull = board.every((line) => (
-  line.every((cell) => cell !== null)
-  ));
+      line.every((cell) => cell !== null)
+    ));
     return isFull ? 'tie' : null;
-    }
-
+  }
 }
-
-
-var node = new Node([['J1', 'J2','J1'],['J2', 'J1',null],['J1', 'J2',null]]);
-// console.log(node.winner());
-export default Node;

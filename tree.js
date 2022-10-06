@@ -49,13 +49,3 @@ class Tree{
 }
 
 export default Tree;
-
-let tree = new Tree([['J1', 'J2',null],['J2', 'J1',null],['J1', 'J2',null]]);
-// let tree = new Tree([[null, null, null],[null, 'J1', null],[null, null, null]]);
-console.log(tree.root);
-console.log(tree.root.children[0]);
-console.log(tree.root.children[1]);
-console.log(tree.root.children[2]);
-// console.log(tree.root.children[0].children);
-// console.log(tree.root.children[0].children[0].children[0].data);
-// console.log(tree.root.children[0].children[0].children[0].value);
